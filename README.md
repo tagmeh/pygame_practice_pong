@@ -11,8 +11,11 @@ Initially, I'm following a [youtube video](https://www.youtube.com/watch?v=Qf3-a
 but beyond that, it's all custom code.
 
 Planned:
-* [ ] Sounds
+* [x] Class-ify the ball, player, and opponent code.
+* [x] Randomize ball start direction on reset
+* [ ] Build out file structure
 * [ ] Scoreboard
+* [ ] Sounds
 * [ ] Scaling opponent difficulty
   * [ ] Scales with score
   * [ ] Speed up movement (to a max)
@@ -20,6 +23,7 @@ Planned:
     * [ ] Balls might be varied in their speed
 * Environmental Hazards, based on difficulty, affects both sides.
   * [ ] Obstacles might be generated that either persist for n seconds, or require being hit n times to dissipate
+    * Different shapes (square, circle, triangle) to cause the ball to bounce less predictably.
   * [ ] Speed/Slow zones for the ball. 
   * [ ] Portals that teleport the ball, either from portal to portal, or an entrance and the exit is random (within reason)
 * [ ] 2 player mode
@@ -43,3 +47,6 @@ Planned:
   * [ ] Shield Wall
     * Throw up a wall of tiles at the center line, trapping the ball on the respective side. Each tile requires n hits to dissipate.
     * The whole wall may only last 30 seconds or so.
+
+#### Known Bugs:
+* [ ] If the ball hits the top or bottom of the paddle in just the right spot, it will bounce inside the paddle, for the length of the paddle.
