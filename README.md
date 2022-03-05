@@ -13,7 +13,7 @@ to get a baseline project started.
 Planned:
 * [x] Class-ify the ball, player, and opponent code.
 * [x] Randomize ball start direction on reset
-* [ ] Build out file structure
+* [x] Build out file structure
 * [x] Scoreboard
   * [x] Code cleanup/class-ify code.
 * [ ] Sounds
