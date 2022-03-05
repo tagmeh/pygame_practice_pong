@@ -15,13 +15,30 @@ Planned:
 * [x] Randomize ball start direction on reset
 * [ ] Build out file structure
 * [x] Scoreboard
-  * [ ] Code cleanup/class-ify code.
+  * [x] Code cleanup/class-ify code.
 * [ ] Sounds
-* [ ] Scaling opponent difficulty
-  * [ ] Scales with score
-  * [ ] Speed up movement (to a max)
-  * [ ] randomly generate n number of balls
-    * [ ] Balls might be varied in their speed
+  * [ ] Ball bounce sound
+  * [ ] Ball duplicate sound?
+  * [ ] Player score sound
+  * [ ] Opponent score sound is different?
+  * [ ] Background music. Change/scale with player score?
+  * [ ] Certain environmental hazards
+    * [ ] On arrival
+    * [ ] While they're in play
+    * [ ] On dissipation
+  * [ ] Powerup/Abilities
+    * [ ] On arrival/Cool down complete
+    * [ ] On use
+* [x] Scaling opponent difficulty
+  * [x] Scales with score (1 extra ball per 10 player points. 1% movement speed per player point)
+  * [x] Speed up movement (to a max)
+  * [x] Duplicates n number of balls based on player score (1 extra ball for every 10 points)
+    * [x] Duplicated balls have non-default speeds. (Can have slow or fast balls)
+* [ ] Startup Screen
+  * [ ] Play - Just start the default game
+  * [ ] Maybe a couple of options for game mode? Endless, Standard (200 pts), Crazytime?
+  * [ ] Settings - To adjust the initial ball, opponent, player, environment settings
+  * [ ] Instructions - To explain difficulty settings, powerups/abilities, and terrain hazards.
 * Environmental Hazards, based on difficulty, affects both sides.
   * [ ] Obstacles might be generated that either persist for n seconds, or require being hit n times to dissipate
     * Different shapes (square, circle, triangle) to cause the ball to bounce less predictably.
@@ -59,7 +76,10 @@ Planned:
     * Swarm slowly spreads to either side of the main paddle when stationary?
   * [ ] Path Prediction
     * Simply show a dotted/dashed line for where the ball is going.
+* Testing
+* [ ] Write tests
   
 
 #### Known Bugs:
-* [ ] If the ball hits the top or bottom of the paddle in just the right spot, it will bounce inside the paddle, for the length of the paddle.
+* [x] If the ball hits the top or bottom of the paddle in just the right spot, it will bounce inside the paddle, for the length of the paddle.
+* [x] If the ball spawns on the top or bottom pixel, it becomes stuck at that y level.
