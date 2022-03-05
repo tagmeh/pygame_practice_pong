@@ -2,7 +2,7 @@ import pygame
 import random
 from typing import TYPE_CHECKING, List
 
-from pygame_practice_pong.lib.game_objects.npc  import Npc
+from pygame_practice_pong.lib.game_objects.npc import Npc
 from pygame_practice_pong.lib.game_objects.pc import Pc
 
 if TYPE_CHECKING:
@@ -65,7 +65,6 @@ class Ball(pygame.Rect):
             else:
                 self.remove = True
             opponent.update_score()
-
 
     def reset_position(self, screen_height: int) -> None:
         # 1, and screen_height - 1, are to keep the ball from bouncing between the walls and the outside boundary.
