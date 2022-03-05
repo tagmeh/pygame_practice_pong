@@ -56,6 +56,7 @@ class Ball(pygame.Rect):
             else:
                 self.remove = True
             player.update_score()
+            opponent.update_speed(player=player)
 
         if self.right >= screen_width:
             if self.original:
@@ -64,6 +65,7 @@ class Ball(pygame.Rect):
             else:
                 self.remove = True
             opponent.update_score()
+
 
     def reset_position(self, screen_height: int) -> None:
         # 1, and screen_height - 1, are to keep the ball from bouncing between the walls and the outside boundary.
