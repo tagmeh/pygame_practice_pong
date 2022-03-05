@@ -2,7 +2,8 @@ import pygame
 import random
 from typing import TYPE_CHECKING, List
 
-from pygame_practice_pong.lib.game_objects import Npc, Pc
+from pygame_practice_pong.lib.game_objects.npc  import Npc
+from pygame_practice_pong.lib.game_objects.pc import Pc
 
 if TYPE_CHECKING:
     pass
