@@ -17,12 +17,12 @@ class Ball(pygame.Rect):
         self.speed_x: float = random.uniform(3, 8)
         self.speed_y: float = random.uniform(3, 8)
 
-    def duplicate(self):
+    def duplicate(self) -> "Ball":
         ball = Ball(start_x=self.x, start_y=self.y, width=30, height=30)
         ball.randomize_direction()
         return ball
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         if self.original:
             return f"Original Ball {self.speed_x}, {self.speed_y}"
         else:
@@ -82,7 +82,7 @@ class Ball(pygame.Rect):
                 if self.colliderect(rect):
                     self.left = rect.right
                     self.speed_x *= -1  # Reverse x axis direction.
-                    if len(ball_list) <= (int(player.score)/10):  # 1 extra ball for every 10 player points.
+                    if len(ball_list) <= (int(player.score) / 10):  # 1 extra ball for every 10 player points.
                         ball_list.append(ball_list[0].duplicate())  # Duplicates the first ball in the ball_list
 
             if isinstance(rect, Pc):
@@ -91,7 +91,8 @@ class Ball(pygame.Rect):
                     self.speed_x *= -1  # Reverse x axis direction.
 
 
-# Not sure if there's a difference between the PC and NPC yet
+# Some differences between Npc and Pc, might pull out the similarities in a base_object,
+#  that doesn't move (precursor for certain environmental hazards and stationary powerups/abilities if I go that route.)
 class Npc(pygame.Rect):
     def __init__(self, start_x: int, start_y: int, width: int, height: int) -> None:
         super().__init__(start_x, start_y, width, height)
@@ -99,7 +100,8 @@ class Npc(pygame.Rect):
         self.score: str = "0"
         self.starting_speed: int = 5
         self.max_speed_multiplier: int = 3  # Limits the max self.speed value, based on the self.starting_speed.
-        self.speed: float = self.starting_speed  # This value changes as the game goes on. See self._update_speed()
+        # This value changes as the game goes on. See self._update_speed()
+        self.speed: float = float(self.starting_speed)
         self.fog_of_war: bool = True  # A handicap imposed on the npc. Limits visibility across the center line.
 
     def move_logic(self, screen_width: int, screen_height: int) -> None:
@@ -109,10 +111,10 @@ class Npc(pygame.Rect):
         if self.bottom >= screen_height:
             self.bottom = screen_height
 
-    def _update_speed(self):
+    def _update_speed(self) -> None:
         # Allow the Npc paddle's speed to increase to a multiple of it's starting speed.
         if self.speed <= self.starting_speed * self.max_speed_multiplier:
-            self.speed *= (1 + int(self.score) / 100)  # Exponentially increase speed, to a point.
+            self.speed *= 1 + int(self.score) / 100  # Exponentially increase speed, to a point.
             # For linear speed growth: self.speed = self.starting_speed * (1 + int(self.score) / 100)
 
     def ball_tracking(self, ball_list: List[Ball], screen_width: int) -> None:
@@ -132,9 +134,9 @@ class Npc(pygame.Rect):
                 return
             else:
                 if self.top < nearest_ball.top:
-                    self.top += self.speed
+                    self.top += int(self.speed)  # int/float doesn't matter to pygame, but mypy complains.
                 if self.bottom > nearest_ball.bottom:
-                    self.bottom -= self.speed
+                    self.bottom -= int(self.speed)  # int/float doesn't matter to pygame, but mypy complains.
 
     def reset_score(self) -> None:
         self.score = "0"
